@@ -43,13 +43,13 @@ public class Main {
         driver.findElement(By.name("username")).click();
 
         // fill username
-        driver.findElement(By.name("username")).sendKeys("anthonyfreay");
+        driver.findElement(By.name("username")).sendKeys("");
 
         // click password field
         driver.findElement(By.name("password")).click();
 
         // fill password
-        driver.findElement(By.name("password")).sendKeys("f*b#V$v65ZcM");
+        driver.findElement(By.name("password")).sendKeys("");
 
         // click 'log in' button
         driver.findElement(By.xpath("//*[@id=\'react-root\']/section/main/div/article/div/div[1]/div/form/div[4]/button")).click();
