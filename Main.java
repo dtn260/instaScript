@@ -14,11 +14,11 @@ public class Main {
 
         goToProfilePage();
 
-        //listFollowers();
+        listFollowers();
 
-        //listFollowing();
+        listFollowing();
 
-        //logOutOfInstagram();
+        closeChromeBrowser();
 
     }
 
@@ -52,7 +52,7 @@ public class Main {
         driver.findElement(By.name("password")).sendKeys("");
 
         // click 'log in' button
-        driver.findElement(By.xpath("//*[@id=\'react-root\']/section/main/div/article/div/div[1]/div/form/div[4]/button")).click();
+        driver.findElement(By.xpath("//*[contains(text(),'Log In')]")).click();
 
         // wait for 'notification modal' to pop up
         Thread.sleep(2000);
@@ -70,19 +70,20 @@ public class Main {
     }
 
     public static void listFollowers() throws InterruptedException {
-        driver.get("https://www.instagram.com/anthonyfreay/following/");
-        System.out.println(driver.getCurrentUrl()); // returns https://www.instagram.com/anthonyfreay/
+        driver.findElement(By.xpath("//*[contains(@href,'anthonyfreay/followers')]")).click();
         Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[contains(@aria-label,'Close')]")).click();
     }
 
-    public static void listFollowing(){}
+    public static void listFollowing() throws InterruptedException{
+        driver.findElement(By.xpath("//*[contains(@href,'anthonyfreay/following')]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[contains(@aria-label,'Close')]")).click();
+    }
 
-    public static void logOutOfInstagram(){
-        // click gear button
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/section/main/div/header/section/div[1]/div")).click();
-
-        // click 'log out'
-        //driver.findElement(By.xpath("/html/body/div[3]/div/div/div/button[6]")).click();
+    public static void closeChromeBrowser(){
+        // click 'gear' button
+        //driver.findElement(By.xpath("//*[contains(@class,'afkep')]")).click();
 
         driver.close();
     }
